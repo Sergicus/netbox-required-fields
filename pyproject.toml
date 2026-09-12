@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "netbox-required-fields"
+version = "0.1.0"
+description = "Visually flag NetBox form fields that are required by custom validation but not by the Django form itself"
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.10"
+authors = [
+    { name = "Serge G." },
+]
+keywords = ["netbox", "netbox-plugin", "django", "required-fields", "form-validation"]
+classifiers = [
+    "Framework :: Django",
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+Homepage = "https://github.com/Sergicus/netbox-required-fields"
+Issues = "https://github.com/Sergicus/netbox-required-fields/issues"
+Changelog = "https://github.com/Sergicus/netbox-required-fields/blob/main/CHANGELOG.md"
+
+[tool.setuptools.packages.find]
+include = ["netbox_required_fields*"]
+
+[tool.setuptools.package-data]
+netbox_required_fields = ["static/netbox_required_fields/*.js"]
