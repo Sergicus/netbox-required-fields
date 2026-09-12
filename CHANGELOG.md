@@ -4,7 +4,7 @@
 
 ### Added
 
-- Initial public release, extracted from the internal `auto_name` plugin.
+- Initial public release.
 - `PLUGINS_CONFIG["netbox_required_fields"]["required_fields"]`: a mapping
   of `app_label.model_name` to a list of form field names to mark as
   required.
