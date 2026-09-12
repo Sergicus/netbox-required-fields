@@ -60,6 +60,9 @@ PLUGINS_CONFIG = {
 }
 ```
 
+<img width="760" height="971" alt="image" src="https://github.com/user-attachments/assets/069cbf6f-441d-4f3b-be6a-9e6a59608e2d" />
+
+
 Then collect static files and restart NetBox:
 
 ```bash
