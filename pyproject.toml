@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "netbox-required-fields"
-version = "0.1.0"
+version = "0.1.1"
 description = "Visually flag NetBox form fields that are required by custom validation but not by the Django form itself"
 readme = "README.md"
 license = { file = "LICENSE" }

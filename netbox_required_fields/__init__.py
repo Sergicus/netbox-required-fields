@@ -18,7 +18,7 @@ class RequiredFieldsConfig(PluginConfig):
         'styling) when they are enforced by custom validation but not by '
         'the Django form itself.'
     )
-    version = '0.1.0'
+    version = '0.1.1'
     author = 'Serge G.'
     min_version = '4.6.0'
     max_version = '4.7.99'

@@ -13,6 +13,12 @@ view_name format for core models (confirmed by NetBox's
 utilities/views.py, get_viewname()):
     "{app_label}:{model_name}_{action}"
     e.g.: "dcim:site_add", "dcim:location_edit"
+
+Third-party PLUGIN models get an extra namespace level - netbox/urls.py
+wraps every plugin's URLs under "plugins" via
+include((plugin_patterns, 'plugins')):
+    "plugins:{plugin_name}:{model_name}_{action}"
+    e.g.: "plugins:netbox_attachments:netboxattachment_add"
 """
 from django.apps import apps
 from django.templatetags.static import static
@@ -52,10 +58,17 @@ class RequiredFieldsInjection(PluginTemplateExtension):
         for suffix in _FORM_ACTION_SUFFIXES:
             if view_name.endswith(suffix):
                 base = view_name[:-len(suffix)]
-                if ':' in base:
-                    app_label, _, model_name = base.rpartition(':')
-                    if app_label and model_name:
-                        return f'{app_label}.{model_name}'
+                parts = base.split(':')
+                # Plugin model: "plugins:{plugin_name}:{model_name}".
+                if len(parts) == 3 and parts[0] == 'plugins':
+                    app_label, model_name = parts[1], parts[2]
+                # Core model: "{app_label}:{model_name}".
+                elif len(parts) == 2:
+                    app_label, model_name = parts
+                else:
+                    continue
+                if app_label and model_name:
+                    return f'{app_label}.{model_name}'
         return None
 
     def head(self):
